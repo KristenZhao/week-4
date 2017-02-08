@@ -2,7 +2,7 @@
   Lab 1, Part 1 - reviewing functions as values
 
   Writing a successful ajax call requires treating functions as values.
-  Treated as a values, functions can be thought of as recipes that other
+  Treated as values, functions can be thought of as recipes that other
   functions can use.
   Here's such a recipe for pbj sandwiches:
 
@@ -19,7 +19,9 @@
   This recipe, can be used by underscore's _.filter. It will return only words with
    >=5 characters.
 ===================== */
-var isLengthOfFiveOrMore = function(str) {};
+var isLengthOfFiveOrMore = function(str) {
+  return str.length >= 5;
+};
 
 console.log("isLengthOfFiveOrMore success:",
   _.isEqual(_.filter(['this', 'is','a', 'test', 'testing'], isLengthOfFiveOrMore), ['testing']));
@@ -30,15 +32,17 @@ console.log("isLengthOfFiveOrMore success:",
   function you write along with underscore's _.each to log the double of every
   number in the provided array.
 ===================== */
-var logDouble = function(num) {};
+var logDouble = function(num) {
+  console.log(num*2);
+};
 var theArray = [1, 5, 20, 100];
-
+_.each(theArray,logDouble);
 
 /* =====================
   Given this already defined function, define fizzbuzzArray so that, when mapped
   over, it will equal ['fizz', 'buzz', 'fizzbuzz'];
 ===================== */
-var fizzbuzzArray = [];
+var fizzbuzzArray = [3,5,15];
 var fizzbuzzFunc = function(num) {
   var str = '';
   if (num % 3 === 0) { str = 'fizz'; }
@@ -94,6 +98,17 @@ var phillySolarInstallationDataUrl = "https://raw.githubusercontent.com/CPLN692-
 var phillyCrimeDataUrl = "https://raw.githubusercontent.com/CPLN692-MUSA611/datasets/master/json/philadelphia-crime-snippet.json";
 var phillyBikeCrashesDataUrl = "https://raw.githubusercontent.com/CPLN692-MUSA611/datasets/master/json/philadelphia-bike-crashes-snippet.json";
 
+var computedValue;
+var parsed;
+$.ajax(phillyBikeCrashesDataUrl).done(function(ajaxResponseValue){
+  computedValue = ajaxResponseValue;
+  parsed = JSON.parse(computedValue);
+  console.log('Parsed Data: ', parsed);
+  _.each(parsed,function(item){
+    //console.log('lat_final is: ',item.lat_final,'lon_final is:',item.long_final);
+    L.marker([item.lat_final,item.long_final]).addTo(map);
+  });
+});
 
 /* =====================
   Data you grab through ajax is just text. You'll need to parse it as javascript
@@ -109,7 +124,8 @@ var phillyBikeCrashesDataUrl = "https://raw.githubusercontent.com/CPLN692-MUSA61
   Now that you've properly parsed your data, use _.each to plot the
   dataset you've pulled down.
 ===================== */
-
+// if (typeof hcArray[i][0] === 'number' && typeof hcArray[i][1] === 'number'){
+//   L.marker([hcArray[i][1],hcArray[i][0]]).addTo(map).bindPopup(hcArray[i][3] + ': \n' + hcArray[i][9]).openPopup();
 
 /* =====================
  Leaflet setup - feel free to ignore this

@@ -33,10 +33,25 @@
 ===================== */
 
 // We set this to HTTP to prevent 'CORS' issues
-var downloadData = $.ajax("http://");
-var parseData = function() {};
-var makeMarkers = function() {};
-var plotMarkers = function() {};
+var targetURL = "http://raw.githubusercontent.com/CPLN692-MUSA611/datasets/master/json/philadelphia-solar-installations.json";
+var downloadData = $.ajax(targetURL);
+//console.log(downloadData);
+
+// parsedata takes json and returns objects
+var parseData = function(data) {
+  var parsed = JSON.parse(data);
+  return parsed;
+};
+
+// convert parsed objects into L.marker object
+var makeMarkers = function(parsed) {var markersArray = _.map(parsed,function(parsedItem){
+  //console.log('L.marker:',L.marker([parsedItem.LAT,parsedItem.LONG_]));
+  return L.marker([parsedItem.LAT,parsedItem.LONG_]);
+}); return markersArray;
+};
+
+// a function to plot L.markers onto map
+var plotMarkers = function(markers) {_.map(markers,function(marker){marker.addTo(map);});};
 
 
 /* =====================
@@ -52,7 +67,7 @@ var plotMarkers = function() {};
   user's input.
 ===================== */
 
-var removeMarkers = function() {};
+var removeMarkers = function(markers) {_.map(markers,function(marker){map.removeLayer(marker)})};
 
 /* =====================
   Optional, stretch goal
@@ -83,8 +98,13 @@ var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/ton
 ===================== */
 
 downloadData.done(function(data) {
+  //console.log(data);
   var parsed = parseData(data);
+  //console.log("parsed", parsed);
   var markers = makeMarkers(parsed);
+  console.log('markers:',markers);
   plotMarkers(markers);
   removeMarkers(markers);
+  //filterMarkers(markers);
+
 });
