@@ -43,7 +43,7 @@ body {
 
 #Grade{
   height: 18px;
-  width:80px;
+  width:100px;
   text-align: center;
   font-size: 12px;
   background-color: #eeeeee;
@@ -55,7 +55,8 @@ body {
   width:18px;
   background-color: #eeaaee;
   display:inline-block;
-  position:static;
+  position:relative;
+  float: right;
 }
 
 p{
