@@ -25,3 +25,55 @@ body {
     overflow-y: auto;
     padding: 20px;
 }
+
+#ByName{
+  height:20px;
+  width:auto;
+  border:1.5px solid #cccccc;
+}
+
+#Hide{
+  height: 20px;
+  width: 100px;
+  float:right;
+  text-align: center;
+  background-color:#eeeeee;
+  border:#aaaaaa solid 1px;
+}
+
+#Grade{
+  height: 18px;
+  width:80px;
+  text-align: center;
+  font-size: 12px;
+  background-color: #eeeeee;
+  border: 1px #999999 solid;
+}
+
+#blue{
+  height:18px;
+  width:18px;
+  background-color: #eeaaee;
+  display:inline-block;
+  position:static;
+}
+
+p{
+  color:#000000;
+}
+
+.eduType{
+  color:#aaaaaa;
+}
+
+.school{
+  height:auto;
+  width: auto;
+  background-color:#eeeeee;
+  padding:1px 5px 1px 5px;
+  margin:5px 0px 5px 0px;
+}
+
+.address{
+  font-size: 11px;
+}

@@ -3,6 +3,7 @@
   <head>
     <!-- CSS Imports -->
     <link rel="stylesheet" href="css/reset.css" />
+    <!-- do I need to add "type="text/css"" in the link?? -->
     <link rel="stylesheet" href="css/leaflet.css" />
     <!-- =====================
     Edit css/main.css
@@ -54,7 +55,33 @@
       <!-- =====================
       Add HTML!
       ====================== -->
+      <div id="Hide">Hide Filter</div>
+      <h2>Filters</h2>
+        <p>By Name</p>
+          <div id="ByName"></div>
+        <p>By Grade</p>
+          <div id="Grade">All Grades</div>
+          <div id="blue"></div>
 
+      <h2>Schools</h2>
+        <div class="school">
+          <p>Henry, Charles W.</p>
+          <p class="eduType">Elem/Middle</p>
+          <p class="address">601 Carpenter La.</p>
+          <p class="address">19119 - 3405</p>
+        </div>
+        <div class="school">
+          <p>Universal Creighton Charter School</p>
+          <p class="eduType">Elem/Middle</p>
+          <p class="address">5401 Tabor Ave.</p>
+          <p class="address">19120 - 3614</p>
+        </div>
+        <div class="school">
+          <p>Marshall, John</p>
+          <p class="eduType">Elementary School</p>
+          <p class="address">130 S 18th St.</p>
+          <p class="address">19120 - 3456</p>
+        </div>
     </div>
     <!-- Map -->
     <div id="map" class="map"></div>
